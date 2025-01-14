@@ -4,7 +4,8 @@ let tamagotchi = {
     name: 'Tamagotch',
     happiness: 100,
     hunger: 0,
-    emoji: '🤖'
+    emoji: '🤖',
+    artAscii: '\(￣︶￣*\))'
 };
 
 function state() {
@@ -12,12 +13,14 @@ function state() {
     console.log(`Happiness: ${tamagotchi.happiness}%`);
     console.log(`Hunger: ${tamagotchi.hunger}%`);
     console.log(`Emoji: ${tamagotchi.emoji}`);
+    console.log(`${tamagotchi.artAscii}`);
     console.log('---------------------------------');
 }
 
 function toFeed() {
     tamagotchi.hunger -= 10;
     tamagotchi.happiness += 5;
+    tamagotchi.artAscii = '(づ￣ 3￣)づ'
 
     if (tamagotchi.hunger < 0) tamagotchi.hunger = 0;
     if (tamagotchi.happiness > 100) tamagotchi.happiness = 100;
@@ -27,6 +30,7 @@ function toFeed() {
 
 function kindness() {
     tamagotchi.happiness += 10;
+    tamagotchi.artAscii = '(*^▽^*)'
 
     if (tamagotchi.happiness > 100) tamagotchi.happiness = 100;
 
@@ -36,6 +40,7 @@ function kindness() {
 function toStroll() {
     tamagotchi.happiness += 20;
     tamagotchi.hunger += 10;
+    tamagotchi.artAscii = 'ƪ(˘⌣˘)ʃ'
 
     if (tamagotchi.happiness > 100) tamagotchi.happiness = 100;
     if (tamagotchi.hunger > 100) tamagotchi.hunger = 100;
@@ -53,7 +58,7 @@ function checkStatus() {
     tamagotchi.happiness -= 5;
 
     if (tamagotchi.hunger >= 100 || tamagotchi.happiness <= 0) {
-        console.log(`\n ${tamagotchi.name} has passed away...`);
+        console.log(`\n ${tamagotchi.name} has passed away... ${tamagotchi.artAscii = 'ಥ_ಥ'}`);
         process.exit();
     }
 }
