@@ -58,6 +58,12 @@ function checkStatus() {
     }
 }
 
+function name(newName) {
+    tamagotchi.name = newName;
+    console.log(`\n ${tamagotchi.name} is now the name of your Tamagotchi`)
+}
+
+
 function startGame() {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -73,7 +79,7 @@ function startGame() {
     function action() {
         state();
         rl.question(
-            'Choose an action: \n1 - Feed \n2 - Give Affection \n3 - Go for a Walk \n4 - Change Emoji \n5 - Exit Game\n\nYour choice: ',
+            'Choose an action: \n1 - Feed \n2 - Give Affection \n3 - Go for a Walk \n4 - Change Emoji \n5 - Change Name  \n6 - Exit Game\n\nYour choice: ',
             function (answer) {
                 switch (answer) {
                     case '1':
@@ -90,8 +96,14 @@ function startGame() {
                             emoji(newEmoji);
                             action();
                         });
-                        return; 
+                        return;
                     case '5':
+                        rl.question('Enter a new name for your Tamagotchi: ', function(newName) {
+                            name(newName);
+                            action();
+                        })
+                        break;
+                    case '6':
                         console.log('Thanks for playing! Goodbye!');
                         rl.close();
                         return;
